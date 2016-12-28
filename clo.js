@@ -473,4 +473,12 @@ function getObject(item){
 }
 
 var mangObj = mangItem.map(getObject);
-console.log(mangObj);
+// console.log(mangObj);
+
+var fs = require('fs');
+fs.writeFile("./data.txt", JSON.stringify(mangObj), function(err) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+});
