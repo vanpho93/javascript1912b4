@@ -33,5 +33,17 @@ console.log(a.substring(5, 9));
 // console.log(b.length);
 
 var c = 'Android, iOS, NodeJS, Java';
-var d = c.split(', ');
-console.log(d);
+var d = c.split(', ', 2);
+//console.log(d);
+
+var e = 'Training Training KhoaPham Training';
+console.log(e.replace('Training', 'NodeJS'));
+// console.log(e);
+
+console.log(e.indexOf('Train', 1));
+
+//title, link, hinh, desc
+var mang = [];
+function TinTuc (title, link, hinh, desc){
+  this.title = title;
+}
