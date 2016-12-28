@@ -432,7 +432,7 @@ http://vnexpress.net/tin-tuc/thoi-su/rua-vang-lon-mac-luoi-ngu-dan-3520582.html
 </item>
 </channel>
 </rss>`
-
+var mangItem = [];
 var startIndex = a.indexOf('<item>');
 a = a.substring(startIndex);
 
@@ -443,4 +443,34 @@ function getEach(){
   return each;
 }
 
-console.log(getEach());
+while (a.indexOf('<item>') != -1) {
+  mangItem.push(getEach());
+}
+
+console.log(mangItem.length);
+console.log(getText(mangItem[0], '<title>', '</title>'));
+
+function getText(text, post, pre){
+  var start = text.indexOf(post) + post.length;
+  var stop = text.indexOf(pre);
+  return text.substring(start, stop);
+}
+
+function TinTuc(title, link, hinhanh, mota){
+  this.title = title;
+  this.link = link;
+  this.hinhanh = hinhanh;
+  this.mota = mota;
+}
+
+function getObject(item){
+  var title = getText(item, '<title>', '</title>');
+  var link = getText(item, '<link>\n', '</link>\n');
+  var hinhanh = getText(item, 'src="', '" ></a>');
+  var mota = getText(item, '</a></br>', '\n]]>');
+  var tintuc = new TinTuc(title, link, hinhanh, mota);
+  return tintuc;
+}
+
+var mangObj = mangItem.map(getObject);
+console.log(mangObj);
