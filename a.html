@@ -1,4 +1,4 @@
-var a = `<rss xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+<rss xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
 <channel>
 <title>Tin mới nhất - VnExpress RSS</title>
 <description>VnExpress RSS</description>
@@ -431,16 +431,4 @@ http://vnexpress.net/tin-tuc/thoi-su/rua-vang-lon-mac-luoi-ngu-dan-3520582.html
 <slash:comments>0</slash:comments>
 </item>
 </channel>
-</rss>`
-
-var startIndex = a.indexOf('<item>');
-a = a.substring(startIndex);
-
-function getEach(){
-  var stopIndex = a.indexOf('</item>') + 7;
-  var each = a.substring(0, stopIndex);
-  a = a.substring(stopIndex + 1);
-  return each;
-}
-
-console.log(getEach());
+</rss>
